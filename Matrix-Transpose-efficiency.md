@@ -5,7 +5,7 @@
 原位交换的思路大致如下：
 ```markdown
 long long getNext(long long i, long long m, long long n){
-	return (i%n)*m + i / n;  //[row, col] == [i/n, i%n]
+	return (i%n)*m + i / n;  //[row, col] == [i/n, i%n];
 }
 long long getPre(long long i, long long m, long long n){
 	return (i%m)*n + i / m;
