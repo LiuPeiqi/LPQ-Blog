@@ -51,8 +51,8 @@ void transpose_copy(long long *&mat, long long m, long long n) {
 	return;
 }
 ```
-代码对比完，直观上看，原位交换虽然省内存，但是乘除模的运算非常多，可能效率并不高。还是实际测试一下：
-i74770k，vs2015 x86 release：
+代码对比完，直观上看，原位交换虽然省内存，但是乘除模的运算非常多，可能效率并不高。还是实际测试一下,行列随机生成的最大范围1920：
+i7 4770k, vs2015, x86, release：
 ```markdown
 Transpose.exe 188 930
 inplace:33.907ms
@@ -75,8 +75,5 @@ copy   :8.64ms
 Transpose.exe 1682 1901
 inplace:709.074ms
 copy   :26.29ms
-PS D:\project\TestInplaceTranspose\Release> .\TestInplaceTranspose.exe 1682 1901
-inplace:706.278ms
-copy   :29.066ms
 ```
-
+结果显示，还是复制来的快！
