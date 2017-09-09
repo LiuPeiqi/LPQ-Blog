@@ -1,6 +1,15 @@
 theme: jekyll-theme-leap-day
-webrick:
-  headers:
-    My-Header: LPQ Blog
-    My-Other-Header: Liu Peiqi
-    
+title: LPQ Blog
+email: Liu_Peiqi#163.com (# -> @)
+descirption: > Liu Peiqi some blog.
+permalink: /blog/:year/:month/:title
+timezone: +0800
+incremental: true
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      author: Liu Peiqi
+#
