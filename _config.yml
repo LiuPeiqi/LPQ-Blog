@@ -1,1 +1,6 @@
 theme: jekyll-theme-leap-day
+webrick:
+  headers:
+    My-Header: LPQ Blog
+    My-Other-Header: Liu Peiqi
+    
