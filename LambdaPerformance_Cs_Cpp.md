@@ -206,7 +206,7 @@ int SharedClassCompare(double & cost) {
     return count;
 }
 ```
-####C++11的结果
+#### C++11的结果
 >OriginalCompare         :0.006153       us/per
 CloserCompare           :0.007234       us/per
 ClassCompare            :0.006896       us/per
