@@ -99,12 +99,17 @@ public int InternalClassCompare(out double cost){
 #### C#的结果
 测试30M次，数组是用random填充的。输出的结果平均每次的时间，单位us
 ```
-Original Compare:       0.00817299978618773     us/per
-Normal Compare:         0.00906182025514931     us/per
-Closer Compare:         0.0302088005131495      us/per
-Internal class Compare: 0.0292144879196066      us/per
+Original Compare:       0.00801431116812772     us/per
+Normal Compare:         0.00898797234694605     us/per
+Closer Compare:         0.0302724766588269      us/per
+Internal class Compare: 0.0179346304611218      us/per
 ```
-这个结果基本符合预期吧，使用C#使用指针貌似在这种情况下没有带来明显优势，闭包lambda表达式比不用的情况下慢了2倍左右。猜测可能的原因就是构造对象和GC带来的吧，这个可能要再想办法设计一个量化的实验方案。
+这个结果基本符合预期吧，使用C#使用指针貌似在这种情况下没有带来明显优势，闭包lambda表达式比不用的情况下慢了2倍左右。而手动使用内部类模拟闭包则带来多一倍的开销。这个延时是不是因为删除对象的GC造成的呢？把上面类的定义改一下，从class定义改成struct，然后我们再看一下运行结果：
+```
+Internal struct Compare: 0.010709087021595      us/per
+```
+时间降了下来，一个非常好的消息。
+
 
 #### 那么，C++的表现呢
 为了表现同样的环境，C++使用new来在堆上分配数组内存，也用random来填充。
@@ -256,6 +261,5 @@ LikeCSCompare   :0.086024       us/per
 然并卵！这个词在这里很准确。
 
 ### 结论
-* C++编译器优化确实nb。
-* C#托管确实nb。
-* C#还是不要在关键（循环里）位置使用lambda。
+* 编译器优化确实nb！
+* C#还是不要在关键（循环里）位置使用lambda，如果要用，可以使用struct来实现的吧。
