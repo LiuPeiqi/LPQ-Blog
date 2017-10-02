@@ -1,16 +1,21 @@
-# C#和C++11的Lambda闭包性能对比
+---
+layout: post
+title: "C#和C++11的Lambda闭包性能对比"
+date: 2017-09-25 
+tags: C++ C# 性能benchmark  
+---
+
 Lambda表达式和闭包是比较方便的语法糖，但是它对C#和C++11会分别有多大的开销呢？
 
 > 更新关于delegate的内容，在C#结论后面
 
-```
-C#使用QueryPerformanceFrequency来计时，C++11使用chrono::high_resolution_clock::now来计时
-C#使用VS2017 框架.Net 4.6.1 Release编译，首选平台是Any CPU，允许不安全代码。
-C++使用VS2017 Release Win32编译，\O2 \Oi
-运行电脑环境：Windows7 SP1 64bit i5-2320 内存8G
-```
+* C# 使用QueryPerformanceFrequency来计时，C++11使用chrono::high_resolution_clock::now来计时
+* C# 使用VS2017 框架.Net 4.6.1 Release编译，首选平台是Any CPU，允许不安全代码。
+* C++使用VS2017 Release Win32编译，\O2 \Oi
+* 运行电脑环境：Windows7 SP1 64bit i5-2320 内存8G
 
-### 先看C#代码
+
+## 先看C#代码
 为防止GC，先主动用fixed来吧循环部分括起来，这个结果可以作为标准参考。：
 
 ```C#

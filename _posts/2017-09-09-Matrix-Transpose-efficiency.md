@@ -1,9 +1,14 @@
-## 矩阵转置的效率验证
+---
+layout: post
+title: "矩阵转置的效率验证"
+date: 2017-09-09 
+tags: C++  
+---
 
 近期在学习矩阵运算的轮子，其中要做矩阵的转置。我第一个想法是新建一个矩阵，然后把要转置的内容复制过去。后来又有点犹豫，新开辟一块内存是不是不如在原位交换各个数值，再交换一下行列效率高呢？
 
 原位交换的思路大致如下：
-```
+```C++
 long long getNext(long long i, long long m, long long n){
 	return (i%n)*m + i / n;  //[row, col] == [i/n, i%n];
 }
@@ -35,7 +40,7 @@ void transpose(long long *mtx, long long m, long long n)
 }
 ```
 新分配内存很简单,按列存入新行中就行
-```
+```C++
 void transpose_copy(long long *&mat, long long m, long long n) {
 	long long * tmat = new long long[m*n];
 	long long * iter = tmat;
@@ -54,7 +59,7 @@ void transpose_copy(long long *&mat, long long m, long long n) {
 代码对比完，直观上看，原位交换虽然省内存，但是乘除模的运算非常多，可能效率并不高。还是实际测试一下,行列随机生成的最大范围1920:
 
 i7 4770k, vs2015, x86, release：
-```markdown
+```
 Transpose.exe 188 930
 inplace:33.907ms
 copy   :0.79ms

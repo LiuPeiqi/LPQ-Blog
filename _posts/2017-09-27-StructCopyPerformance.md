@@ -1,4 +1,9 @@
-# C# Struct的复制性能
+---
+layout: post
+title: "C# Struct的复制性能"
+date: 2017-09-27
+tags: C# 性能benchmark  
+---
 
 开始用class和float[]写了一个Matrix类，后来担心GC开销，于是用struct重写了一个固定大小的Matrix4x4。结果表明CPU占用率上升了但是实际性能下降了，那么，是因为struct作为函数参数多次传递引发额外复制造成的么？在C++中，常规的使用方法是使用const T& 常引用的办法来避免额外的复制操作，而C#中只有ref，而没有常引用。那么就先使用ref作为替代研究一下。
 

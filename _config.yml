@@ -1,15 +1,56 @@
-#theme: jekyll-theme-leap-day
-title: LPQ Blog
-email: Liu_Peiqi#163.com (# -> @)
-descirption: > Liu Peiqi some blog.
-permalink: /blog/:year/:month/:title
-timezone: +0800
-incremental: true
-defaults:
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      author: Liu Peiqi
+# Basic
+title: LPQ-Blog
+subtitle: Learn something...
+description: day day up!   
+# 头像里面的标题
+avatarTitle: Liu Peiqi
+# 头像里面的描述
+avatarDesc: C++
+url: "http://www.lpq.design"
+
+# Comment
+#comment:
+    #disqus: 
+
+# Social
+social:
+    #weibo:
+    github: LiuPeiqi, https://github.com/LiuPeiqi
+    # twitter: 
+    mail: liu_peiqi@163.com
+
+
+
+# 《----------------- 上面的信息修改成你自己的 ---------------------------》
 #
+#
+#
+# 《--------------- 下面的信息可以自行选择是否修改 ------------------------》
+
+
+permalink: /:year/:month/:title/
+# Format
+highlighter: rouge
+
+textColor: #FF0000
+
+# supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
+cover_color: clear
+
+# The blog button should not be removed.
+blog_button:
+    title: 博客主页
+
+# Navigation buttons in the front page.s
+nav:
+    - {title: 所有文章, description: archive, url: '/archive'}   
+    - {title: 标签, description: tags, url: '/tags'}      
+    - {title: 关于我, description: about, url: '/about'}      
+    
+
+# Pagination
+gems: [jekyll-paginate,jekyll-sitemap]
+paginate: 32
+paginate_path: "page/:num/"
+
+
