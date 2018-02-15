@@ -5,8 +5,6 @@ date: 2018-02-15
 tags: lua string enum 性能benchmark  
 ---
 
-# Lua中状态量的比较模式
-
 学习lua快半年了，看了两个不同组里使用lua比较常量的习惯：
  1. 直接字符串比较，类似`state == 'OpenState'`这样的形式
  2. 在lua中构造一个类似枚举的全局变量table，类似`state == WINDOW_STATES.OPEN_STATE`，其中WINDOW_STATES是注册的全局table，state和OPEN_STATE是整数类型
@@ -15,9 +13,7 @@ tags: lua string enum 性能benchmark
 
 ### 真的是这样么？
 咋一看，好像是的，但是隐隐约约好像发现点什么问题：一般有GC托管的语言，字符串比较需要小心一些，因为对于对象来说`==`通常代表比较引用，如果要比较具体的值，需要特别地使用类似`equalTo`的类型方法。但是，lua里没有针对string类型的equal方法，那么lua里字符串的比较到底是比的什么呢？看reference manual！[lua 5.3.4，第3.4.4章](http://www.lua.org/manual/5.3/manual.html#3.4.4)
-```
-Equality (==) first compares the type of its operands. If the types are different, then the result is false. Otherwise, the values of the operands are compared. Strings are compared in the obvious way. Numbers are equal if they denote the same mathematical value.
-```
+>Equality (==) first compares the type of its operands. If the types are different, then the result is false. Otherwise, the values of the operands are compared. Strings are compared in the obvious way. Numbers are equal if they denote the same mathematical value.
 
 ### Lua究竟怎么比较字符串
 Obvious是个啥，先网络上搜索一番，比较多的说法是字符串比较是比较两个串的hash值，如果hash值一样，则两个串是一样的。如果真是这样，那么lua的字符串比较还是比较悲观的，因为hash的计算负担太重了。
