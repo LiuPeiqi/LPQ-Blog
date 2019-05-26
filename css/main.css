@@ -114,22 +114,30 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5em; 
-  /*background:#B9D3EE;*/
+  font-size: 1.4em; 
+  font-weight: bold; 
+  color: #006699;
+  background: #ffffff;
+  border-radius: 4px; 
+  padding: 6px 15px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  border-left: 12px solid #6699cc; 
   /*text-align: center;*/
 }
 
 h3 {
   font-size: 1.2em; 
+  color: #6699cc;
+  font-weight: bold; 
   text-indent: 4px; 
   border-radius: 4px; 
   padding: 6px 15px;
   margin-bottom: 20px;
   margin-top: 5px;
-  background:#B9D3EE;
+  background: #ffffff;
   /*0px right, 5px botton, 5px fuzzy*/
-  box-shadow: 0px 5px 5px #9FB6CD;
-  border-left: 6px solid #1874CD; 
+  border-left: 6px solid #99ccff; 
   position:relative;
 }
 
@@ -1209,7 +1217,7 @@ body {
 }
 
 .ih-item.circle.effect .info h2 {
-    color: #fff;    
+    color: #6699cc;    
     position: relative;
     font-size: 18px;
     margin: 0 auto;
