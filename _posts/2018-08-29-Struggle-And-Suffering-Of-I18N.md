@@ -49,7 +49,7 @@ I18N看似是一个不太难的问题，每个人都可以通过短暂的思考�
 |去重复值项|57232|2.8MB|---|
 
 如上表数据，项目里有近一半I18N数据是空串，剩下一半中文本不重复的项又剩一半。造成这个原因的一方面是有大量空白key和重复的值，另一方面是我们在导出的大量I18N形式诸如```task_template_task_complete_condition_task_target_1_comment_1000001="杀怪"```，这导致Key占据空间竟然跟文本差不多大。另一方面这个string key所占据的空间其实是两份，一份配置数据中的，一份是I18N中的。
-![文本重复程度，横坐标是对数坐标系](../images/struggle_and_suffering_of_i18n/i18n_duplication.png)
+![文本重复程度，横坐标是对数坐标系]({{ site.url }}/images/struggle_and_suffering_of_i18n/i18n_duplication.png)
 
 ### 使用场景以及使用率
 
@@ -63,12 +63,12 @@ I18N看似是一个不太难的问题，每个人都可以通过短暂的思考�
 |动画I18N文本|2.01%|
 |逻辑文本|72.96|
 各分类使用文本的频数
-![I18N文本的使用频数](../images/struggle_and_suffering_of_i18n/text_reference_frequency.png)
+![I18N文本的使用频数]({{ site.url }}/images/struggle_and_suffering_of_i18n/text_reference_frequency.png)
 采样中I18N文本和逻辑文本的字符长度分布(非字节长度)
-![I18N文本长度分布](../images/struggle_and_suffering_of_i18n/i18n_distribution.png)
-![逻辑文本长度分布](../images/struggle_and_suffering_of_i18n/text_distribution.png)
+![I18N文本长度分布]({{ site.url }}/images/struggle_and_suffering_of_i18n/i18n_distribution.png)
+![逻辑文本长度分布]({{ site.url }}/images/struggle_and_suffering_of_i18n/text_distribution.png)
 采样中I18N使用频数
-![采样中I18N使用频数](../images/struggle_and_suffering_of_i18n/i18n_reference_count.png)
+![采样中I18N使用频数]({{ site.url }}/images/struggle_and_suffering_of_i18n/i18n_reference_count.png)
 
 ## 优化方案
 
@@ -152,7 +152,7 @@ TextHelper.SetText(ui_text_component, data.name)
 |Meizu 16th|3|705|11ms|84.44%|0.016ms|0.100ms|
 
 估算的IO实时耗时：
-![估算的IO实时耗时](../images/struggle_and_suffering_of_i18n/i18n_reference_const.png)
+![估算的IO实时耗时]({{ site.url }}/images/struggle_and_suffering_of_i18n/i18n_reference_const.png)
 
 ## 结语
 
