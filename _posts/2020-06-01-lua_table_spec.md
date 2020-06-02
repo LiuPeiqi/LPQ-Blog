@@ -76,7 +76,7 @@ Array内存块同Node内存块一样，是及时分配和释放的，但是Array
 
 前文介绍了Table的Array和Hash部分所占空间大小。在通常使用Lua脚本的过程中，我们不会主动确定大小，而是随需要不断插入新的Index或Key。当Table发现Index超出arraysize或这新插入Key时lastfreenode已经没有可用空间了，就会重新确定Table中的Array和Hash部分的大小。这一过程在Lua ltable.c源文件中被定义为`rehash`。
 
-如前面提过的，Array部分并不是必须要求Table中的值（Val）从下标1（Key）开始连续存储，而是在`rehash`时通过`countint`和`computesizes`函数计算出最佳的Array长度，并把小于arraysize整数Key的Node都移动到Array中。Array中元素的引用也简单高效，不再判断是否发生hash冲突，也需要频繁考虑是否需求重新`rehash`。
+如前面提过的，Array部分并不是必须要求Table中的值（Val）从下标1（Key）开始连续存储，而是在`rehash`时通过`countint`和`computesizes`函数计算出最佳的Array长度，并把小于arraysize整数Key的Node都移动到Array中。Array中元素的引用也简单高效，不再判断是否发生hash冲突，也不需要频繁考虑是否重新`rehash`。
 
 Table Array在`rehash`时除了会积极扩容以外，还会积极缩容。缩容以后不能加入到Array部分中的值会被插入到Hash部分中，反之亦然。
 
