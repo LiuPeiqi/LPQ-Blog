@@ -30,7 +30,7 @@ Lua中常见的类型有boolean，number，string，function，table，userdata�
 
 ### Lua TValue的内存布局
 
-- 因为Lua虚拟机是C语言实现无继承实现，所以在Lua虚拟机中大量使用union结构和宏来实现多态，下列图示水平向为union，纵向为内存增长。
+- 因为Lua虚拟机是C语言开发的，无法直接实现继承和接口关系，所以在Lua虚拟机中大量使用union结构和宏来实现多态，下列图示水平向为union，纵向为内存增长。
 
 TValue是Lua基础类型，其中值类型通过TValue字段n（Lua_Number）或b（boolean）直接使用，GCObject类型通过TValue字段gc间接引用。Lua脚本中local变量会首先是一个TValue，然后在通过字段tt确认具体是哪一种变量。
 
