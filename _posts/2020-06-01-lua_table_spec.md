@@ -26,7 +26,7 @@ excerpt_separator: <!--more-->
 
 Lua中常见的类型有boolean，number，string，function，table，userdata。在Lua虚拟机实现中又针对GC方式分为两类：TValue和GCObject。[^1]
 
-其中boolean和number是TValue类型；string，function，table，userdata是GCObject，出此之外GCObject还有Proto，UpVal和lua_State（详见lua-5.1.5源文件lobject.h和lstate.h定义）。
+其中boolean和number是TValue类型；string，function，table，userdata是GCObject，除此之外GCObject还有Proto，UpVal和lua_State（详见lua-5.1.5源文件lobject.h和lstate.h定义）。
 
 ### Lua TValue的内存布局
 
