@@ -4,12 +4,13 @@ title: 关于我
 ---
 
 <p>
-最近沉迷于P5中不能自拔。
+最后的生还者2要发售了！
 <p>
 
 所在公司
 
 <a target="_blank" href=""> 字节跳动-绿洲工作室 </a>
+<p>
 <a target="_blank" href="http://games.wanmei.com/"> 完美世界-乐逍遥工作室 </a>
 任职客户端开发工程师，C# Unity环境，手游。
 <p>
