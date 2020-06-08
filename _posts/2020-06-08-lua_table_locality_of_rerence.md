@@ -120,7 +120,7 @@ Lua Table中Array和Hash部分虽然都是连续内存块，但是Lua Table Hash
 形如下列定义就至少产生了三次间接引用，如果Vector3的值是GCObject类型的话，引用次数则更多！
 
 ```
-local players_pos = {{x = 1, y = 2, z = 3}, ...}
+local players_pos = { {x = 1, y = 2, z = 3}, ...}
 ```
 
 良好的局部性会很好的利用多级缓存加速程序运行。反之，多次间接引用可能造成缓存频繁丢失，甚至造成缓存颠簸，减慢程序运行。为了利用局部性优化，这里 ~~不得不暗搓搓的又提起ECS~~ 采用SOA(Struct of Array)结构。[^4]
