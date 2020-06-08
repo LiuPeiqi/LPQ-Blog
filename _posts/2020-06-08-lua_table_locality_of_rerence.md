@@ -303,7 +303,7 @@ HostPlayer.CreateChild(player, ...)
 
 测试用例见附录，下图为测试结果：
 
-![OO vs MixIn]({{ site.url }}/images/lua_table_spec/OO_vs_Mixin.png)
+![OO vs MixIn]({{ site.url }}/images/lua_table_spec/OO_vs_MixIn.png)
 
 图例中OO*表示使用Metatable模拟面向对象的调用耗时，左侧两幅图为创建对象耗时，右侧两幅图为一个对象调用n次抽象函数耗时。图中方块数据表示耗时的上下界；中心x表示平均值；细线表示偏离值。
 
