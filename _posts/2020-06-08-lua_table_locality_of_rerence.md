@@ -115,7 +115,7 @@ Lua Table中Array和Hash部分虽然都是连续内存块，但是Lua Table Hash
 
 根据上篇文章分析，Lua Table中的Array和Hash是连续的内存块，但是如果Lua Table中的项又是一个Table，那么这样还是会破坏访问的局部性
 
-![Lua Table引用关系]({{ site.url }}/images/lua_table_spec/lua_table_ref.png
+![Lua Table引用关系]({{ site.url }}/images/lua_table_spec/lua_table_ref.png)
 
 形如下列定义就至少产生了三次间接引用，如果Vector3的值是GCObject类型的话，引用次数则更多！
 
