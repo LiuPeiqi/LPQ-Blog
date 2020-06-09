@@ -117,7 +117,7 @@ Lua Table中Array和Hash部分虽然都是连续内存块，但是Lua Table Hash
 
 ![Lua Table引用关系]({{ site.url }}/images/lua_table_spec/lua_table_ref.png)
 
-形如下列定义就至少产生了三次间接引用，如果Vector3的值是GCObject类型的话，引用次数则更多！
+形如下列定义就至少产生了三次间接引用，如果Table的key是GCObject类型的话，引用次数则更多！
 
 ```
 local players_pos = { {x = 1, y = 2, z = 3}, ...}
