@@ -73,7 +73,7 @@ rigid_body.velocity = (pos - transform.position) / dt
     * 如果使用collider和ContinuousSpeculative的方式则可以解决这个问题。
     * 尽管如此，这里考虑了一下业务场景，通过约束转动速度，激光半径和命中距离来解决问题，不再引入新的检测模式。
 
-![激光夹角示意]({{ site.url }}/images/bullet_system/laster_missing.png
+![激光夹角示意]({{ site.url }}/images/bullet_system/laster_missing.png)
 
 最后，子弹的逻辑不做在各自GameObject上的另一个原因是为了增加子弹系统的运算性能：
 
@@ -84,7 +84,7 @@ rigid_body.velocity = (pos - transform.position) / dt
 
 常规的物理功能都会放到FixedUpdate里，简单来说Update的帧率和间隔不稳定的，因为多数物理过程都是对运动速度积分来求运动轨迹，所以必须使用FixedUpdate来提供一个稳定的dt来求解稳定的积分结果。
 
-![两种Update的积分示意图]({{ site.url }}/images/bullet_system/fixedupdate_vs_update.png
+![两种Update的积分示意图]({{ site.url }}/images/bullet_system/fixedupdate_vs_update.png)
 
 但是，不稳定的dt只对非线性的曲线积分有影响（变加速运动），而自由落体运动是线性的匀加速运动，其实不稳定dt不会产生误差。
 
@@ -105,7 +105,7 @@ var dis = average_v * dt;
 v0 = velocity;
 ```
 
-![两种Update的积分示意图]({{ site.url }}/images/bullet_system/average_v.png
+![两种Update的积分示意图]({{ site.url }}/images/bullet_system/average_v.png)
 
 因此对于匀速运动和匀加速运动来说，使用Update并没有什么问题。从而避免使用FixedUpdate以节省计算性能：当发生卡顿时，两帧Update之间会插入更多的FixedUpdate，如果FixedUpdate的计算负担繁重，那么这会进一步增加卡顿表现。
 
