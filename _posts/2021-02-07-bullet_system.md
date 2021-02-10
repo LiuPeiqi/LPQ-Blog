@@ -91,7 +91,7 @@ rigid_body.velocity = (pos - transform.position) / dt
 一般大家写路程计算的时候习惯性的：
 
 ```
-var velocity = v0 + grivate * dt;
+var velocity = v0 + gravity * dt;
 var dis = velocity * dt;
 v0 = velocity;
 ```
@@ -99,7 +99,7 @@ v0 = velocity;
 这样计算其实是错误的，使用FixedUpdate能表现正常只是凑巧错的均匀。正确的方法是使用平均速度来做计算：
 
 ```
-var velocity = v0 + grivate * dt;
+var velocity = v0 + gravity * dt;
 var average_v = (v0 + velocity) * 0.5f;
 var dis = average_v * dt;
 v0 = velocity;
@@ -179,7 +179,7 @@ var distance = (v1 + v0) * 0.5f * dt;
 v0 = v1;
 ```
 
->这里有个带阻力抛物线和抛物线的对比图
+![阻力抛物线]({{ site.url }}/images/bullet_system/damping_vs_gravity.png)
 
 由上图可以看到带阻力子弹的轨迹在飞行的前段其实差别不大，但是在飞行后段会很快下坠。阻力特性用来给玩家感受子弹在远处更强烈的下坠，和近处射击手感平直更容易瞄准。
 
@@ -204,7 +204,7 @@ if (ratio > 0) {
 var point = new Vector3(dis.x, y - pos.y, dis.z);
 ```
 
->这里有一张两个正弦曲线拼接的弹道。
+![正弦拼接示意]({{ site.url }}/images/bullet_system/sin_sin.png)
 
 ### 碰撞与反弹
 
@@ -212,7 +212,7 @@ var point = new Vector3(dis.x, y - pos.y, dis.z);
 
 * 如果是有半径的子弹碰到Collider，那么返回的`raycastHit.point`并不是子弹要停留的点，而是撞击点。真正子弹停留的点是：`point = raycastHit.point + raycastHit.normal * bullet.radius`。即，向着法线移动一个半径的距离的点才是子弹发生碰撞时的位置。
 
->这里有一张撞击点示意图
+![碰撞点和半径关系]({{ site.url }}/images/bullet_system/collision.png)
 
 * 如果子弹不是匀速运动的，那么碰撞了以后，在撞击点计算出射速度时不能直接使用轨迹计算得出的终速度，而是要用真实路程反向矫正撞击点的终速度。匀加匀减速运动的撞击拟合速度计算如下：
 
@@ -237,7 +237,7 @@ var real_time = (hit_pos - p0).magnitude / velocity.magnitude;
 * 如果子弹在斜波连续碰撞（特别快速的连续碰撞的表现是贴地翻滚），那么要额外在碰撞当帧给子弹增加一个重力影响在斜坡上的速度分量，用以增强斜坡滚动加速能力：
 
 ```
-bullet.velocity += Vector3.Reflect(Vector3.down, raycastHit.normal) * grivate * dt;
+bullet.velocity += Vector3.Reflect(Vector3.down, raycastHit.normal) * gravity * dt;
 ```
 
 * 如果子弹在碰撞时还要表现翻滚和旋转，那么需要用两次实际撞击点的距离和子弹半径算出翻滚角度。
@@ -249,7 +249,7 @@ var rot = Quaternion.AngleAxis(alpha, Vector3.Cross(normal, bullet.forward));
 bullet.localRotation = rot * bullet.localRotation;
 ```
 
->这里有一个碰撞反弹翻滚效果的gif
+![翻滚示意]({{ site.url }}/images/bullet_system/roll.gif)
 
 * 碰撞以后的动能损失
 
@@ -276,7 +276,7 @@ if(bullet.life_time > now) {
 }
 ```
 
->这里是一个激光的效果gif
+![激光]({{ site.url }}/images/bullet_system/laser.gif)
 
 ### 还是超大地图范围的影响
 
@@ -310,7 +310,7 @@ if(bullet.life_time > now) {
 
 AimIK给主角使用相对简单，表现也正常，但是给怪物（炮塔、机器人）使用时，就会放大问题：IK启用和关闭时没有缓动；IK解算器在一些边界角度无法求解。考虑到怪物瞄准时需要转动的骨骼是非常有限的，所以这里造了一个分别限定水平和垂直旋转规则的简易IK的轮子：
 
->这里有一个AimIK和AimControl的对比gif
+![IK改进]({{ site.url }}/images/bullet_system/aimik_vs_aimctrl.gif)
 
 ### 射线检查与子弹出射点
 
