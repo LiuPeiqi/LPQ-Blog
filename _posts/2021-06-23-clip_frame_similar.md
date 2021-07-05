@@ -59,8 +59,8 @@ $$
 
 到这里，动作切换时只要知道当前动作运行了多久，目标动作是哪个，那么就查表可知结果。下面分别是站立和奔跑中释放技能的案例。
 
-[image](image/stand_attack_fadeout.gif)
-[image](image/run_attack_fadeout.gif)
+[image]({{ site.url }}/image/clip_frame_similar/stand_attack_fadeout.gif)
+[image]({{ site.url }}/image/clip_frame_similar/run_attack_fadeout.gif)
 
 ## 筛选最佳衔接动作
 
@@ -93,7 +93,7 @@ $$
 Cos(Mi_{[m,m+n)},Mj_{[0,n)}) = \frac { \sum_{k=0}^n{Cos(Mi_{m+k}, Mj_k)}} {n}
 $$
 
-这样计算的相似性时，一帧展示的极大相似就被连续的运动趋势抹平了。
+这样计算的相似性时，一帧暂时的极大相似就被连续的运动趋势抹平了。
 
 接下来在筛选阶段，我们连续取当前帧和未来相邻的多个帧数据，也就是相似矩阵里的多行。再比较出最大相似的行和列。比如:
 
@@ -105,7 +105,7 @@ $$
 
 看一下效果：
 
-[image](image/run_to_jump.gif)
+[image]({{ site.url }}/image/clip_frame_similar/run_to_jump.gif)
 
 ## 性能分析和展望
 
