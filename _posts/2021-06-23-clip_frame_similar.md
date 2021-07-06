@@ -59,8 +59,8 @@ $$
 
 到这里，动作切换时只要知道当前动作运行了多久，目标动作是哪个，那么就查表可知结果。下面分别是站立和奔跑中释放技能的案例。
 
-![image]({{ site.url }}/image/clip_frame_similar/stand_attack_fadeout.gif)
-![image]({{ site.url }}/image/clip_frame_similar/run_attack_fadeout.gif)
+![image]({{ site.url }}/images/clip_frame_similar/stand_attack_fadeout.gif)
+![image]({{ site.url }}/images/clip_frame_similar/run_attack_fadeout.gif)
 
 ## 筛选最佳衔接动作
 
@@ -105,7 +105,7 @@ $$
 
 看一下效果：
 
-![image]({{ site.url }}/image/clip_frame_similar/run_to_jump.gif)
+![image]({{ site.url }}/images/clip_frame_similar/run_to_jump.gif)
 
 ## 性能分析和展望
 
