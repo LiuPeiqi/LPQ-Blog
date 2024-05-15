@@ -4,15 +4,21 @@ title: 关于我
 ---
 
 <p>
-最后的生还者2要发售了！
+喝酒吃肉才是快乐的！
 <p>
 
 所在公司
-
+<a target="_blank" href=""> 元绎娱乐 </a>
+客户端技术专家，CPP UnrealEngine TPS MMO
+<p>
+<a target="_blank" href=""> 祖龙娱乐 </a>
+客户端技术专家，CPP UnrealEngine TPS MMO。
+<p>
 <a target="_blank" href=""> 字节跳动-绿洲工作室 </a>
+资深工程师，C# Unity TPS MMO。
 <p>
 <a target="_blank" href="http://games.wanmei.com/"> 完美世界-乐逍遥工作室 </a>
-任职客户端开发工程师，C# Unity环境，手游。
+客户端开发工程师，C# Unity Sandbox MMO。
 <p>
 
 <p> 
